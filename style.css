@@ -35,6 +35,8 @@ body {
     background-attachment: fixed;
     color: var(--text-color);
     line-height: 1.6;
+    opacity: 1; /* Для плавных переходов */
+    transition: opacity 0.4s ease-in-out; /* Для плавных переходов */
 }
 
 main {
@@ -407,7 +409,7 @@ section { padding: 80px 0; }
     border-radius: 24px;
     padding: 35px 40px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    min-height: 480px; /* Увеличил высоту для нового блока */
+    min-height: 480px; 
     display: flex;
     flex-direction: column;
 }
@@ -586,7 +588,7 @@ section { padding: 80px 0; }
 .connection-status-display {
     text-align: center;
     padding: 12px;
-    margin-top: 5px; /* Уменьшил отступ */
+    margin-top: 5px; 
     font-size: 14px;
     color: var(--text-color-muted);
     background-color: rgba(255, 255, 255, 0.05);
@@ -621,4 +623,9 @@ button.network-option-card.btn-success:hover {
 }
 button.network-option-card.btn-success span {
     color: var(--progress-green) !important;
+}
+
+/* === СТИЛИ ДЛЯ ПЛАВНЫХ ПЕРЕХОДОВ === */
+body.is-fading-out {
+    opacity: 0;
 }
