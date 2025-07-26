@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoArm - Wallet Check</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="checking-page">
+
+    <header class="simple-header">
+        <div class="logo">
+            <a href="index.html">
+                <i class="fa-solid fa-shield-halved"></i>
+                CryptoArm
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="checking-section">
+            <div class="container">
+                <div class="checking-card animate-on-scroll">
+                    <div class="checking-header">
+                        <h1 class="checking-title">Wallet check</h1>
+                        <div class="step-indicator">Step 1 of 4</div>
+                    </div>
+                    <p class="checking-subtitle">To continue, please select the required network</p>
+
+                    <form class="network-form">
+                        <div class="network-options">
+                            <label class="network-option">
+                                <input type="radio" name="network" value="tron" checked>
+                                <div class="network-option-card">
+                                    <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1958.png" alt="TRON logo">
+                                    <span>TRON</span>
+                                </div>
+                            </label>
+                            <label class="network-option">
+                                <input type="radio" name="network" value="bsc">
+                                <div class="network-option-card">
+                                    <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png" alt="Binance Smart Chain logo">
+                                    <span>Binance Smart Chain</span>
+                                </div>
+                            </label>
+                            <label class="network-option">
+                                <input type="radio" name="network" value="eth">
+                                <div class="network-option-card">
+                                    <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png" alt="Ethereum logo">
+                                    <span>Ethereum</span>
+                                </div>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-gradient">Continue</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="simple-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                 <div class="footer-copyright">
+                    © 2025 CryptoArm
+                </div>
+                <div class="footer-legal">
+                    <a href="#">User Agreement</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-disclaimer">
+                <p>CryptoArm provides risk scores and related data for informational purposes only and does not constitute financial or legal advice. All assessments are based on publicly available blockchain data.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
