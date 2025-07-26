@@ -13,26 +13,33 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     animatedElements.forEach(el => observer.observe(el));
 
-    // --- ИЗМЕНЕНИЕ: Добавлен эффект свечения от мыши ---
-    // Этот код отслеживает движение курсора по экрану и обновляет
-    // CSS-переменные '--mouse-x' и '--mouse-y' в реальном времени.
-    // CSS использует эти переменные для позиционирования фонового градиента.
+    // --- Эффект свечения от мыши ---
     document.body.addEventListener('mousemove', e => {
         document.documentElement.style.setProperty('--mouse-x', e.clientX + 'px');
         document.documentElement.style.setProperty('--mouse-y', e.clientY + 'px');
     });
-    // --- КОНЕЦ ИЗМЕНЕНИЯ ---
 
-    // Изменение хедера при скролле
-    const header = document.querySelector('.main-header');
-    if (header) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                header.classList.add('header-scrolled');
-            } else {
-                header.classList.remove('header-scrolled');
-            }
-        });
+    // --- Логика для главной страницы (анимация хедера) ---
+    if (document.body.classList.contains('home-page')) {
+        const header = document.querySelector('.main-header');
+        if (header) { 
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+        }
     }
 
+    // --- Логика для страницы выбора сети (checking.html) ---
+    const networkForm = document.querySelector('.network-form');
+    if (networkForm && window.location.pathname.includes('checking.html')) {
+        networkForm.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            const selectedNetwork = document.querySelector('input[name="network"]:checked').value;
+            window.location.href = `connect.html?network=${selectedNetwork}`;
+        });
+    }
 });

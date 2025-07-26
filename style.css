@@ -42,16 +42,12 @@ main {
     z-index: 2;
 }
 
-/* === ИЗМЕНЕНИЕ: Фон сделан непрозрачным === */
-/* Здесь мы используем --card-bg-color-opaque вместо --card-bg-color-glass, */
-/* чтобы фоновое свечение от мыши не проходило сквозь элементы. */
-/* backdrop-filter был убран, т.к. он работает только с полупрозрачным фоном. */
 .results-card,
 .feature-card,
 .apart-list-item,
 .new-pricing-container,
 .cert-card {
-    background-color: var(--card-bg-color-opaque); /* НЕПРОЗРАЧНЫЙ ФОН */
+    background-color: var(--card-bg-color-opaque);
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     z-index: 5;
@@ -366,49 +362,263 @@ section { padding: 80px 0; }
     .footer-links-column a { justify-content: center; }
     .social-links { justify-content: center; }
     .footer-bottom-left { flex-direction: column; gap: 25px; }
-}```
+}
 
----
 
-### `script.js`
+/* === СТИЛИ ДЛЯ СТРАНИЦ ПРОВЕРКИ (checking-page) === */
 
-Этот файл остаётся без изменений.
+.checking-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.checking-page main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 120px; 
+}
+.checking-page .checking-section {
+    padding: 0 0 60px; 
+    width: 100%;
+}
 
-```javascript
-document.addEventListener("DOMContentLoaded", function() {
-    
-    // Intersection Observer для анимации при скролле
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-    animatedElements.forEach(el => observer.observe(el));
+.simple-header {
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.simple-header .logo a {
+    font-size: 28px;
+}
 
-    // --- Эффект свечения от мыши ---
-    // Этот код отслеживает движение курсора по экрану и обновляет
-    // CSS-переменные '--mouse-x' и '--mouse-y' в реальном времени.
-    // CSS использует эти переменные для позиционирования фонового градиента.
-    document.body.addEventListener('mousemove', e => {
-        document.documentElement.style.setProperty('--mouse-x', e.clientX + 'px');
-        document.documentElement.style.setProperty('--mouse-y', e.clientY + 'px');
-    });
-
-    // Изменение хедера при скролле
-    const header = document.querySelector('.main-header');
-    if (header) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                header.classList.add('header-scrolled');
-            } else {
-                header.classList.remove('header-scrolled');
-            }
-        });
+.checking-card {
+    max-width: 520px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--card-bg-color-opaque);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 35px 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    min-height: 480px; /* Увеличил высоту для нового блока */
+    display: flex;
+    flex-direction: column;
+}
+.checking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.checking-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+.step-indicator {
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--primary-blue);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(37, 99, 235, 0.3);
+}
+.checking-subtitle {
+    color: var(--text-color-muted);
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+.network-form .btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 12px;
+    margin-top: auto; 
+}
+.network-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+.network-option input[type="radio"] {
+    display: none;
+}
+.network-option-card {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.network-option-card:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+.network-option input[type="radio"]:checked + .network-option-card {
+    background-color: rgba(168, 85, 247, 0.1);
+    border-color: var(--primary-purple);
+}
+.network-option-card img {
+    width: 40px;
+    height: 40px;
+}
+.network-option-card span {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+.simple-footer {
+    padding: 40px 0;
+    font-size: 14px;
+    color: var(--text-color-muted);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #0c0a19;
+}
+.simple-footer .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.simple-footer .footer-disclaimer {
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.simple-footer .footer-disclaimer p {
+    font-size: 12px;
+    color: var(--text-color-muted);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+@media (max-width: 768px) {
+    .simple-footer .footer-bottom {
+        flex-direction: column;
+        gap: 25px;
     }
+}
 
-});
+
+/* === СТИЛИ ДЛЯ СТРАНИЦЫ ПОДКЛЮЧЕНИЯ (connect.html) === */
+
+#network-text-container {
+    display: flex;
+    flex-direction: column;
+}
+#network-name {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-color);
+    line-height: 1.2;
+}
+#network-description {
+    font-size: 14px;
+    color: var(--text-color-muted);
+    line-height: 1.2;
+}
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: auto; 
+}
+.button-group .btn {
+    flex-grow: 1;
+    border-radius: 12px;
+    padding: 15px;
+}
+.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-color);
+}
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: none; 
+}
+.connect-page .button-group .btn {
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    font-size: 16px;
+}
+
+/* === НОВЫЕ СТИЛИ === */
+
+/* Стили для неактивной кнопки */
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+    background-image: none;
+    background-color: #5a5a6e;
+}
+.btn:disabled:hover {
+    transform: none;
+}
+
+/* Стили для кнопки, когда кошелек подключен */
+.btn-success {
+    background-color: var(--progress-green) !important;
+    border-color: var(--progress-green) !important;
+    color: white !important;
+}
+
+/* Стили для отображения статуса */
+.connection-status-display {
+    text-align: center;
+    padding: 12px;
+    margin-top: 5px; /* Уменьшил отступ */
+    font-size: 14px;
+    color: var(--text-color-muted);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+}
+
+/* Делаем карточку WalletConnect кликабельной кнопкой */
+button.network-option-card {
+    width: 100%;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+}
+/* Стили для заблокированной кнопки коннекта */
+button.network-option-card:disabled {
+    cursor: default;
+}
+button.network-option-card:disabled:hover {
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+/* Специфичные стили для успешного коннекта */
+button.network-option-card.btn-success {
+    background-color: rgba(34, 197, 94, 0.1) !important;
+    border-color: rgba(34, 197, 94, 0.4) !important;
+    color: var(--progress-green) !important;
+}
+button.network-option-card.btn-success:hover {
+    background-color: rgba(34, 197, 94, 0.1) !important;
+    border-color: rgba(34, 197, 94, 0.4) !important;
+}
+button.network-option-card.btn-success span {
+    color: var(--progress-green) !important;
+}
