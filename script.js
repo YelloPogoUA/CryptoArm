@@ -1,90 +1,119 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     // =================================================================
-    // НОВАЯ ЛОГИКА: ПЛАВНЫЕ ПЕРЕХОДЫ МЕЖДУ СТРАНИЦАМИ
+    // ЛОГИКА ПЕРЕКЛЮЧАТЕЛЯ ТЕМ (НОВЫЙ БЛОК)
     // =================================================================
+    const themeSwitcher = document.getElementById('theme-switcher');
+    const themeIcon = themeSwitcher ? themeSwitcher.querySelector('i') : null;
 
-    // Функция для плавного перехода по URL
+    // Функция для применения темы и сохранения выбора
+    const applyTheme = (theme) => {
+        document.body.dataset.theme = theme;
+        if(themeIcon) {
+            themeIcon.className = `fa-solid ${theme === 'light' ? 'fa-moon' : 'fa-sun'}`;
+        }
+        localStorage.setItem('theme', theme);
+    };
+
+    // Проверяем сохраненную тему при загрузке
+    const savedTheme = localStorage.getItem('theme') || 'dark'; // 'dark' - тема по умолчанию
+    applyTheme(savedTheme);
+
+    // Добавляем обработчик на кнопку
+    if (themeSwitcher) {
+        themeSwitcher.addEventListener('click', () => {
+            const currentTheme = document.body.dataset.theme;
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            applyTheme(newTheme);
+        });
+    }
+
+    // =================================================================
+    // ЛОГИКА ПЛАВНЫХ ПЕРЕХОДОВ МЕЖДУ СТРАНИЦАМИ
+    // =================================================================
     const smoothNavigate = (url) => {
-        // Добавляем класс, который запускает анимацию затухания (см. style.css)
         document.body.classList.add('is-fading-out');
-
-        // Ждем завершения анимации (400 мс, как в CSS) и только потом переходим
         setTimeout(() => {
             window.location.href = url;
         }, 400);
     };
 
-    // Находим все ссылки на странице
-    const allLinks = document.querySelectorAll('a');
-
-    allLinks.forEach(link => {
-        // Проверяем, что ссылка внутренняя (а не на внешний сайт вроде pexels.com)
-        // и не является "якорем" (#)
-        if (link.hostname === window.location.hostname && link.getAttribute('href') && !link.getAttribute('href').startsWith('#')) {
+    document.querySelectorAll('a').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && link.hostname === window.location.hostname && !href.startsWith('#') && link.target !== '_blank') {
             link.addEventListener('click', function(event) {
-                // Отменяем стандартное поведение ссылки
+                if (link.classList.contains('is-active')) {
+                    event.preventDefault();
+                    return;
+                }
                 event.preventDefault();
-                const destination = this.href;
-                smoothNavigate(destination);
+                smoothNavigate(this.href);
             });
         }
     });
-
-
-    // =================================================================
-    // ИСПРАВЛЕННАЯ ЛОГИКА: ФОРМА ВЫБОРА СЕТИ (checking.html)
-    // =================================================================
     
+    // =================================================================
+    // ЛОГИКА ПОДСВЕТКИ АКТИВНОЙ ССЫЛКИ
+    // =================================================================
+    const setActiveLink = () => {
+        let currentPage = window.location.pathname.split("/").pop() || "index.html";
+        document.querySelectorAll('.nav-links a, .mega-menu a, .main-footer a').forEach(link => {
+            link.classList.remove('is-active'); 
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('is-active');
+                const parentDropdown = link.closest('.nav-item-dropdown');
+                if (parentDropdown) {
+                    parentDropdown.querySelector('a').classList.add('is-active');
+                }
+            }
+        });
+    };
+    setActiveLink();
+
+    // =================================================================
+    // ЛОГИКА ВЫПАДАЮЩЕГО МЕНЮ "PRODUCTS"
+    // =================================================================
+    const dropdownItem = document.querySelector('.nav-item-dropdown');
+    if (dropdownItem) {
+        const megaMenu = dropdownItem.querySelector('.mega-menu');
+        dropdownItem.addEventListener('mouseenter', () => { if (megaMenu) megaMenu.classList.add('is-visible'); });
+        dropdownItem.addEventListener('mouseleave', () => { if (megaMenu) megaMenu.classList.remove('is-visible'); });
+    }
+
+    // =================================================================
+    // ЛОГИКА ФОРМЫ ВЫБОРА СЕТИ (checking.html)
+    // =================================================================
     const networkForm = document.querySelector('.network-form');
-    // Проверяем, что мы на странице checking.html (по наличию формы и отсутствию класса connect-page)
     if (networkForm && !document.body.classList.contains('connect-page')) {
         networkForm.addEventListener('submit', function(event) {
-            // Отменяем стандартную отправку формы, которая перезагружала страницу
             event.preventDefault();
-
-            // Находим выбранную сеть
             const selectedNetwork = document.querySelector('input[name="network"]:checked').value;
             const destinationUrl = `connect.html?network=${selectedNetwork}`;
-
-            // Используем нашу новую функцию для плавного перехода
             smoothNavigate(destinationUrl);
         });
     }
 
     // =================================================================
-    // СТАРАЯ ЛОГИКА: Анимации, шапка и т.д. (остается без изменений)
+    // АНИМАЦИИ И ЭФФЕКТЫ
     // =================================================================
-
-    // Intersection Observer для анимации при скролле
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('is-visible');
         });
-    }, {
-        threshold: 0.1
-    });
+    }, { threshold: 0.1 });
     animatedElements.forEach(el => observer.observe(el));
 
-    // Эффект свечения от мыши
     document.body.addEventListener('mousemove', e => {
         document.documentElement.style.setProperty('--mouse-x', e.clientX + 'px');
         document.documentElement.style.setProperty('--mouse-y', e.clientY + 'px');
     });
 
-    // Логика для главной страницы (анимация хедера)
     if (document.body.classList.contains('home-page')) {
         const header = document.querySelector('.main-header');
         if (header) {
             window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    header.classList.add('header-scrolled');
-                } else {
-                    header.classList.remove('header-scrolled');
-                }
+                header.classList.toggle('header-scrolled', window.scrollY > 50);
             });
         }
     }

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CryptoArm - Advanced Crypto Wallet Screening</title>
     
-    <!-- ДОБАВЬТЕ ЭТУ СТРОКУ -->
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     
     <link rel="stylesheet" href="style.css">
@@ -26,21 +25,87 @@
                     </a>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#">Products <i class="fa-solid fa-chevron-down"></i></a></li>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">Analysis</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">About Us <i class="fa-solid fa-chevron-down"></i></a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="#">Products <i class="fa-solid fa-chevron-down"></i></a>
+                        <div class="mega-menu">
+                            <div class="menu-column">
+                                <h4 class="menu-heading">For Business</h4>
+                                <div class="menu-items-grid-business">
+                                    <a href="checking.html" class="menu-item">
+                                        <i class="fa-solid fa-shield-virus menu-item-icon"></i>
+                                        <div class="menu-item-text">
+                                            <span class="menu-item-title">Wallet Checker</span>
+                                            <p class="menu-item-desc">Check wallet risk score before you transact.</p>
+                                        </div>
+                                    </a>
+                                    <a href="transaction-monitoring.html" class="menu-item">
+                                        <i class="fa-solid fa-timeline menu-item-icon"></i>
+                                        <div class="menu-item-text">
+                                            <span class="menu-item-title">Transaction Monitoring</span>
+                                            <p class="menu-item-desc">Automated monitoring of wallets and transactions.</p>
+                                        </div>
+                                    </a>
+                                    <a href="developer-api.html" class="menu-item">
+                                        <i class="fa-solid fa-code menu-item-icon"></i>
+                                        <div class="menu-item-text">
+                                            <span class="menu-item-title">Developer API</span>
+                                            <p class="menu-item-desc">Integrate risk scoring into your applications.</p>
+                                        </div>
+                                    </a>
+                                    <a href="kyc-kyb.html" class="menu-item">
+                                        <i class="fa-solid fa-id-card menu-item-icon"></i>
+                                        <div class="menu-item-text">
+                                            <span class="menu-item-title">KYC/KYB</span>
+                                            <p class="menu-item-desc">Fast, secure verification for users and businesses.</p>
+                                        </div>
+                                    </a>
+                                    <a href="aml-kyt.html" class="menu-item">
+                                        <i class="fa-solid fa-gavel menu-item-icon"></i>
+                                        <div class="menu-item-text">
+                                            <span class="menu-item-title">AML/KYT Solutions</span>
+                                            <p class="menu-item-desc">Compliance solutions to meet regulatory demands.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="menu-column">
+                                <h4 class="menu-heading">For Personal Use</h4>
+                                <div class="menu-items-grid-single">
+                                     <a href="investigation.html" class="menu-item">
+                                        <i class="fa-solid fa-user-secret menu-item-icon"></i>
+                                        <div class="menu-item-text">
+                                            <span class="menu-item-title">Investigation</span>
+                                            <p class="menu-item-desc">Help tracing and recovering stolen crypto.</p>
+                                        </div>
+                                    </a>
+                                    <a href="ai-assistant.html" class="menu-item">
+                                        <i class="fa-solid fa-robot menu-item-icon"></i>
+                                        <div class="menu-item-text">
+                                            <span class="menu-item-title">AI Assistant</span>
+                                            <p class="menu-item-desc">Get instant answers and AML checks via our AI.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="analysis.html">Analysis</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
                 </ul>
-                <div class="lang-selector">
-                    <a href="#">EN <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="theme-switcher-wrapper">
+                    <button id="theme-switcher" class="theme-switcher" aria-label="Toggle theme">
+                        <i class="fa-solid fa-sun"></i>
+                    </button>
                 </div>
             </nav>
         </div>
     </header>
 
     <main>
+        <!-- ... остальное содержимое main ... -->
         <section class="wallet-check-section">
             <div class="container">
                 <div class="wallet-check-container">
@@ -193,7 +258,7 @@
                         <p>Simply paste any public cryptocurrency address from a supported blockchain into our analysis tool.</p>
                     </div>
                     <div class="feature-visual-content">
-                        <img src="https://images.pexels.com/photos/844124/pexels-photo-844124.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Enter and analyze crypto address" class="feature-image">
+                        <img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Enter and analyze crypto address" class="feature-image">
                     </div>
                 </div>
 
@@ -204,7 +269,7 @@
                         <p>Our powerful engine instantly analyzes the wallet's entire transaction history, tracing the origin and destination of its funds.</p>
                     </div>
                     <div class="feature-visual-content">
-                        <img src="https://images.pexels.com/photos/730547/pexels-photo-730547.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Scanning the blockchain network" class="feature-image">
+                        <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Scanning the blockchain network" class="feature-image">
                     </div>
                 </div>
 
@@ -215,7 +280,7 @@
                         <p>We connect the wallet to known entities, flagging interactions with sanctioned addresses, mixers, darknet markets, and other high-risk sources.</p>
                     </div>
                     <div class="feature-visual-content">
-                        <img src="https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Identifying high-risk connections" class="feature-image">
+                        <img src="https://images.pexels.com/photos/7752793/pexels-photo-7752793.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Identifying high-risk connections" class="feature-image">
                     </div>
                 </div>
 
@@ -226,7 +291,7 @@
                         <p>Our algorithm synthesizes all data points into a single, easy-to-understand report, providing a clear 'go' or 'no-go' signal for your transaction.</p>
                     </div>
                     <div class="feature-visual-content">
-                         <img src="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Clear crypto risk report" class="feature-image">
+                         <img src="https://images.pexels.com/photos/187041/pexels-photo-187041.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Clear crypto risk report" class="feature-image">
                     </div>
                 </div>
             </div>
@@ -314,7 +379,7 @@
             <div class="footer-top">
                 <div class="footer-logo-and-info">
                     <div class="logo">
-                        <a href="#">
+                        <a href="index.html">
                            <i class="fa-solid fa-shield-halved"></i>
                            CryptoArm
                         </a>
@@ -331,20 +396,24 @@
                     </div>
                 </div>
                 <div class="footer-certs">
-                    <div class="cert-card">
-                        <div class="cert-icon"><i class="fa-solid fa-award"></i></div>
-                        <div class="cert-text">
-                            <span class="cert-standard">ISO/IEC 27001</span>
-                            <span class="cert-status">Certified</span>
+                    <a href="about-us.html" class="cert-link">
+                        <div class="cert-card">
+                            <div class="cert-icon"><i class="fa-solid fa-award"></i></div>
+                            <div class="cert-text">
+                                <span class="cert-standard">ISO/IEC 27001</span>
+                                <span class="cert-status">Certified</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="cert-card">
-                        <div class="cert-icon"><i class="fa-solid fa-award"></i></div>
-                        <div class="cert-text">
-                            <span class="cert-standard">ISO/IEC 27701</span>
-                            <span class="cert-status">Certified</span>
+                    </a>
+                    <a href="about-us.html" class="cert-link">
+                         <div class="cert-card">
+                            <div class="cert-icon"><i class="fa-solid fa-award"></i></div>
+                            <div class="cert-text">
+                                <span class="cert-standard">ISO/IEC 27701</span>
+                                <span class="cert-status">Certified</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
     
@@ -352,26 +421,28 @@
                 <div class="footer-links-column">
                     <h4>FOR BUSINESS</h4>
                     <ul>
-                        <li><a href="#">Wallet Screening API</a></li>
-                        <li><a href="#">KYT Solutions</a></li>
-                        <li><a href="#">AML Compliance</a></li>
-                        <li><a href="#">Consulting</a></li>
+                        <li><a href="checking.html">Wallet Checker</a></li>
+                        <li><a href="transaction-monitoring.html">Transaction Monitoring</a></li>
+                        <li><a href="developer-api.html">Developer API</a></li>
+                        <li><a href="kyc-kyb.html">KYC/KYB</a></li>
+                        <li><a href="aml-kyt.html">AML/KYT Solutions</a></li>
                     </ul>
                 </div>
                 <div class="footer-links-column">
                     <h4>FOR PERSONAL USE</h4>
                     <ul>
-                        <li><a href="#">Wallet Checker</a></li>
-                        <li><a href="#">Investigation Help</a></li>
+                        <li><a href="investigation.html">Investigation</a></li>
+                        <li><a href="ai-assistant.html">AI Assistant</a></li>
                     </ul>
                 </div>
                 <div class="footer-links-column">
                     <h4>COMPANY</h4>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Press Kit</a></li>
-                        <li><a href="#">Careers</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="analysis.html">Analysis</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-links-column">
@@ -390,11 +461,11 @@
                     <div class="footer-copyright">
                         © 2025 CryptoArm
                     </div>
-                    <a href="#" class="support-btn"><i class="fa-solid fa-paper-plane"></i> Support</a>
+                    <a href="support.html" class="support-btn"><i class="fa-solid fa-paper-plane"></i> Support</a>
                 </div>
                 <div class="footer-legal">
-                    <a href="#">User Agreement</a>
-                    <a href="#">Privacy Policy</a>
+                    <a href="user-agreement.html">User Agreement</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
                 </div>
             </div>
 
