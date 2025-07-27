@@ -12,6 +12,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Полифиллы для поддержки Web3 -->
+    <script>
+        // Проверка поддержки ES модулей
+        if (typeof window.global === 'undefined') {
+            window.global = window;
+        }
+        // Дополнительные полифиллы
+        if (typeof window.process === 'undefined') {
+            window.process = { env: {} };
+        }
+        if (typeof window.Buffer === 'undefined') {
+            window.Buffer = { isBuffer: () => false };
+        }
+    </script>
 </head>
 <body class="checking-page connect-page">
 
@@ -22,7 +37,7 @@
                 CryptoArm
             </a>
         </div>
-        <!-- НОВЫЙ БЛОК: Переключатель тем добавлен и сюда для консистентности -->
+        <!-- Переключатель тем -->
         <div class="theme-switcher-wrapper" style="position: absolute; top: 35px; right: 40px;">
              <button id="theme-switcher" class="theme-switcher" aria-label="Toggle theme">
                 <i class="fa-solid fa-sun"></i>
@@ -84,8 +99,10 @@
         </div>
     </footer>
     
-    <script type="module" src="connect-wallet.js"></script>
+    <!-- Обычный скрипт для основных функций -->
     <script src="script.js"></script>
-
+    
+    <!-- Скрипт подключения кошелька -->
+    <script src="connect-wallet.js"></script>
 </body>
 </html>
